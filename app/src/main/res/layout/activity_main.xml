@@ -44,25 +44,25 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="C" />
+                    android:text="@string/buttonClear_text" />
                 <Button
                     android:id="@+id/buttonParen"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="( )" />
+                    android:text="@string/buttonParen_text" />
                 <Button
                     android:id="@+id/buttonPercent"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="%" />
+                    android:text="@string/buttonPercent_text" />
                 <Button
                     android:id="@+id/buttonDivide"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="/" />
+                    android:text="@string/buttonDivide_text" />
 
             </LinearLayout>
 
@@ -77,25 +77,25 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="7" />
+                    android:text="@string/button7_text" />
                 <Button
                     android:id="@+id/button8"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="8" />
+                    android:text="@string/button8_text" />
                 <Button
                     android:id="@+id/button9"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="9" />
+                    android:text="@string/button9_text" />
                 <Button
                     android:id="@+id/buttonMultiply"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="*" />
+                    android:text="@string/buttonMultiply_text" />
 
             </LinearLayout>
 
@@ -110,25 +110,25 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="4" />
+                    android:text="@string/button4_text" />
                 <Button
                     android:id="@+id/button5"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="5" />
+                    android:text="@string/button5_text" />
                 <Button
                     android:id="@+id/button6"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="6" />
+                    android:text="@string/button6_text" />
                 <Button
                     android:id="@+id/buttonSubtract"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="-" />
+                    android:text="@string/buttonSubtract_text" />
 
             </LinearLayout>
 
@@ -143,25 +143,25 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="1" />
+                    android:text="@string/button1_text" />
                 <Button
                     android:id="@+id/button2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="2" />
+                    android:text="@string/button2_text" />
                 <Button
                     android:id="@+id/button3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="3" />
+                    android:text="@string/button3_text" />
                 <Button
                     android:id="@+id/buttonAdd"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="+" />
+                    android:text="@string/buttonAdd_text" />
 
             </LinearLayout>
 
@@ -176,25 +176,25 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="+/-" />
+                    android:text="@string/buttonSign_text" />
                 <Button
                     android:id="@+id/button0"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="0" />
+                    android:text="@string/button0_text" />
                 <Button
                     android:id="@+id/buttonDecimal"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="." />
+                    android:text="@string/buttonDecimal_text" />
                 <Button
                     android:id="@+id/buttonEquals"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="=" />
+                    android:text="@string/buttonEquals_text" />
 
             </LinearLayout>
 
