@@ -27,17 +27,16 @@
                 android:textSize="40sp" />
         </LinearLayout>
 
-        <LinearLayout
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
 
                 <Button
                     android:id="@+id/buttonClear"
@@ -64,13 +63,12 @@
                     android:layout_weight="1"
                     android:text="@string/buttonDivide_text" />
 
-            </LinearLayout>
+            </TableRow>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
 
                 <Button
                     android:id="@+id/button7"
@@ -97,13 +95,12 @@
                     android:layout_weight="1"
                     android:text="@string/buttonMultiply_text" />
 
-            </LinearLayout>
+            </TableRow>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
 
                 <Button
                     android:id="@+id/button4"
@@ -130,13 +127,12 @@
                     android:layout_weight="1"
                     android:text="@string/buttonSubtract_text" />
 
-            </LinearLayout>
+            </TableRow>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
 
                 <Button
                     android:id="@+id/button1"
@@ -163,13 +159,12 @@
                     android:layout_weight="1"
                     android:text="@string/buttonAdd_text" />
 
-            </LinearLayout>
+            </TableRow>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
 
                 <Button
                     android:id="@+id/buttonSign"
@@ -196,9 +191,9 @@
                     android:layout_weight="1"
                     android:text="@string/buttonEquals_text" />
 
-            </LinearLayout>
+            </TableRow>
 
-        </LinearLayout>
+        </TableLayout>
 
     </LinearLayout>
 
