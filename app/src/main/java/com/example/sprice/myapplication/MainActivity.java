@@ -10,15 +10,15 @@ import com.example.sprice.myapplication.components.CalculatorOperatorButton;
 import com.example.sprice.myapplication.components.Operator;
 
 enum EntryState {
-    EMPTY,
-    OPERAND_VALUE_ENTRY,
-    OPERAND_DECIMAL_ENTRY,
-    OPERAND_DECIMAL_VALUE_ENTRY,
-    OPERATOR_ENTRY
+    OPERAND_START,
+    OPERAND_LEADING_ZERO,
+    OPERAND_ENTRY,
+    OPERAND_DECIMAL_START,
+    OPERAND_DECIMAL_ENTRY
 }
 
 public class MainActivity extends AppCompatActivity {
-    private EntryState mEntryState = EntryState.EMPTY;
+    private EntryState mEntryState = EntryState.OPERAND_START;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,28 +28,54 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void numericButton_onClick(View view) {
-        if (mEntryState == EntryState.EMPTY) {
-            mEntryState = EntryState.OPERAND_VALUE_ENTRY;
-        } else if (mEntryState == EntryState.OPERATOR_ENTRY) {
-            mEntryState = EntryState.OPERAND_VALUE_ENTRY;
-        } else if (mEntryState == EntryState.OPERAND_DECIMAL_ENTRY) {
-            mEntryState = EntryState.OPERAND_DECIMAL_VALUE_ENTRY;
-        }
         CalculatorNumericButton button = (CalculatorNumericButton)view;
-
         Integer buttonNumericValue = button.getNumericValue();
-        appendToEntry(buttonNumericValue.toString());
+
+        switch (mEntryState) {
+
+            case OPERAND_START:
+                if (buttonNumericValue == 0) {
+                    mEntryState = EntryState.OPERAND_LEADING_ZERO;
+                } else {
+                    mEntryState = EntryState.OPERAND_ENTRY;
+                }
+                appendToEntry(buttonNumericValue.toString());
+                break;
+
+            case OPERAND_LEADING_ZERO:
+                if (buttonNumericValue != 0) {
+                    mEntryState = EntryState.OPERAND_ENTRY;
+                    appendToEntry(buttonNumericValue.toString(), true);
+                }
+                break;
+
+            case OPERAND_DECIMAL_START:
+                mEntryState = EntryState.OPERAND_DECIMAL_ENTRY;
+                appendToEntry(buttonNumericValue.toString());
+                break;
+
+            default:
+                appendToEntry(buttonNumericValue.toString());
+        }
     }
 
     public void buttonDecimal_onClick(View view) {
-        if (mEntryState == EntryState.OPERAND_VALUE_ENTRY) {
-            mEntryState = EntryState.OPERAND_DECIMAL_ENTRY;
-            appendToEntry(".");
+        switch (mEntryState) {
+
+            case OPERAND_START:
+                appendToEntry("0.");
+                mEntryState = EntryState.OPERAND_DECIMAL_START;
+                break;
+
+            case OPERAND_LEADING_ZERO:
+            case OPERAND_ENTRY:
+                appendToEntry(".");
+                mEntryState = EntryState.OPERAND_DECIMAL_START;
         }
     }
 
     public void operatorButton_onClick(View view) {
-        if (mEntryState != EntryState.OPERAND_VALUE_ENTRY && mEntryState != EntryState.OPERAND_DECIMAL_VALUE_ENTRY) {
+        if (mEntryState != EntryState.OPERAND_ENTRY && mEntryState != EntryState.OPERAND_DECIMAL_ENTRY) {
             return;
         }
         CalculatorOperatorButton button = (CalculatorOperatorButton)view;
@@ -70,11 +96,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        mEntryState = EntryState.OPERATOR_ENTRY;
+        mEntryState = EntryState.OPERAND_START;
     }
 
     public void buttonClear_onClick(View view) {
-        mEntryState = EntryState.EMPTY;
+        mEntryState = EntryState.OPERAND_START;
         setEntry("");
 }
 
@@ -84,9 +110,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void appendToEntry(String entry) {
+        appendToEntry(entry, false);
+    }
+
+    private void appendToEntry(String entry, boolean replacePreviousCharacter) {
         TextView display = findViewById(R.id.display);
         String currentText = display.getText().toString();
-        String newText = currentText + entry;
+        String currentTextAfterRemovingLastCharacter = replacePreviousCharacter ? currentText.substring(0, currentText.length() - 1) : currentText;
+        String newText = currentTextAfterRemovingLastCharacter + entry;
         display.setText(newText);
     }
 }
