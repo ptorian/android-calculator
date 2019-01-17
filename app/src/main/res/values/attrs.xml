@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CalculatorNumericButton">
+        <attr name="numericValue" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="CalculatorOperatorButton">
+        <attr name="operator" format="string" />
+    </declare-styleable>
+</resources>

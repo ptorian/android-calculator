@@ -19,7 +19,7 @@
 
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/display"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
@@ -43,7 +43,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/buttonClear_text" />
+                    android:text="@string/buttonClear_text"
+                    android:onClick="buttonClear_onClick" />
                 <Button
                     android:id="@+id/buttonParen"
                     android:layout_width="0dp"
@@ -56,12 +57,14 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="@string/buttonPercent_text" />
-                <Button
+                <com.example.sprice.myapplication.components.CalculatorOperatorButton
                     android:id="@+id/buttonDivide"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/buttonDivide_text" />
+                    android:text="@string/buttonDivide_text"
+                    android:onClick="operatorButton_onClick"
+                    app:operator="/"/>
 
             </TableRow>
 
@@ -70,30 +73,38 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1">
 
-                <Button
+                <com.example.sprice.myapplication.components.CalculatorNumericButton
                     android:id="@+id/button7"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/button7_text" />
-                <Button
+                    android:text="@string/button7_text"
+                    android:onClick="numericButton_onClick"
+                    app:numericValue="7" />
+                <com.example.sprice.myapplication.components.CalculatorNumericButton
                     android:id="@+id/button8"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/button8_text" />
-                <Button
+                    android:text="@string/button8_text"
+                    android:onClick="numericButton_onClick"
+                    app:numericValue="8" />
+                <com.example.sprice.myapplication.components.CalculatorNumericButton
                     android:id="@+id/button9"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/button9_text" />
-                <Button
+                    android:text="@string/button9_text"
+                    android:onClick="numericButton_onClick"
+                    app:numericValue="9" />
+                <com.example.sprice.myapplication.components.CalculatorOperatorButton
                     android:id="@+id/buttonMultiply"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/buttonMultiply_text" />
+                    android:text="@string/buttonMultiply_text"
+                    android:onClick="operatorButton_onClick"
+                    app:operator="*" />
 
             </TableRow>
 
@@ -102,30 +113,38 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1">
 
-                <Button
+                <com.example.sprice.myapplication.components.CalculatorNumericButton
                     android:id="@+id/button4"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/button4_text" />
-                <Button
+                    android:text="@string/button4_text"
+                    android:onClick="numericButton_onClick"
+                    app:numericValue="4" />
+                <com.example.sprice.myapplication.components.CalculatorNumericButton
                     android:id="@+id/button5"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/button5_text" />
-                <Button
+                    android:text="@string/button5_text"
+                    android:onClick="numericButton_onClick"
+                    app:numericValue="5" />
+                <com.example.sprice.myapplication.components.CalculatorNumericButton
                     android:id="@+id/button6"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/button6_text" />
-                <Button
+                    android:text="@string/button6_text"
+                    android:onClick="numericButton_onClick"
+                    app:numericValue="6" />
+                <com.example.sprice.myapplication.components.CalculatorOperatorButton
                     android:id="@+id/buttonSubtract"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/buttonSubtract_text" />
+                    android:text="@string/buttonSubtract_text"
+                    android:onClick="operatorButton_onClick"
+                    app:operator="-" />
 
             </TableRow>
 
@@ -134,30 +153,38 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1">
 
-                <Button
+                <com.example.sprice.myapplication.components.CalculatorNumericButton
                     android:id="@+id/button1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/button1_text" />
-                <Button
+                    android:text="@string/button1_text"
+                    android:onClick="numericButton_onClick"
+                    app:numericValue="1" />
+                <com.example.sprice.myapplication.components.CalculatorNumericButton
                     android:id="@+id/button2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/button2_text" />
-                <Button
+                    android:text="@string/button2_text"
+                    android:onClick="numericButton_onClick"
+                    app:numericValue="2" />
+                <com.example.sprice.myapplication.components.CalculatorNumericButton
                     android:id="@+id/button3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/button3_text" />
-                <Button
+                    android:text="@string/button3_text"
+                    android:onClick="numericButton_onClick"
+                    app:numericValue="3" />
+                <com.example.sprice.myapplication.components.CalculatorOperatorButton
                     android:id="@+id/buttonAdd"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/buttonAdd_text" />
+                    android:text="@string/buttonAdd_text"
+                    android:onClick="operatorButton_onClick"
+                    app:operator="+" />
 
             </TableRow>
 
@@ -172,18 +199,21 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="@string/buttonSign_text" />
-                <Button
+                <com.example.sprice.myapplication.components.CalculatorNumericButton
                     android:id="@+id/button0"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/button0_text" />
+                    android:text="@string/button0_text"
+                    android:onClick="numericButton_onClick"
+                    app:numericValue="0" />
                 <Button
                     android:id="@+id/buttonDecimal"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/buttonDecimal_text" />
+                    android:text="@string/buttonDecimal_text"
+                    android:onClick="buttonDecimal_onClick" />
                 <Button
                     android:id="@+id/buttonEquals"
                     android:layout_width="0dp"
