@@ -10,6 +10,8 @@ import com.example.sprice.myapplication.components.CalculatorOperatorButton;
 import com.example.sprice.myapplication.components.Operator;
 
 enum EntryState {
+    START,
+    EXPRESSION_START,
     OPERAND_START,
     OPERAND_LEADING_ZERO,
     OPERAND_ENTRY,
@@ -18,7 +20,8 @@ enum EntryState {
 }
 
 public class MainActivity extends AppCompatActivity {
-    private EntryState mEntryState = EntryState.OPERAND_START;
+    private EntryState mEntryState = EntryState.START;
+    private int mParenCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         switch (mEntryState) {
 
+            case START:
+            case EXPRESSION_START:
             case OPERAND_START:
                 if (buttonNumericValue == 0) {
                     mEntryState = EntryState.OPERAND_LEADING_ZERO;
@@ -62,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
     public void buttonDecimal_onClick(View view) {
         switch (mEntryState) {
 
+            case START:
+            case EXPRESSION_START:
             case OPERAND_START:
                 appendToEntry("0.");
                 mEntryState = EntryState.OPERAND_DECIMAL_START;
@@ -75,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void operatorButton_onClick(View view) {
-        if (mEntryState != EntryState.OPERAND_ENTRY && mEntryState != EntryState.OPERAND_DECIMAL_ENTRY) {
+        if (mEntryState != EntryState.EXPRESSION_START && mEntryState != EntryState.OPERAND_ENTRY && mEntryState != EntryState.OPERAND_DECIMAL_ENTRY) {
             return;
         }
         CalculatorOperatorButton button = (CalculatorOperatorButton)view;
@@ -99,8 +106,33 @@ public class MainActivity extends AppCompatActivity {
         mEntryState = EntryState.OPERAND_START;
     }
 
+    public void buttonParen_onClick(View view) {
+        switch (mEntryState) {
+            case OPERAND_LEADING_ZERO:
+            case OPERAND_ENTRY:
+            case OPERAND_DECIMAL_ENTRY:
+                if (mParenCount == 0) {
+                    ++mParenCount;
+                    appendToEntry("*(");
+                } else {
+                    --mParenCount;
+                    appendToEntry(")");
+                }
+                mEntryState = EntryState.EXPRESSION_START;
+                break;
+
+            case START:
+            case EXPRESSION_START:
+            case OPERAND_START:
+                ++mParenCount;
+                appendToEntry("(");
+                mEntryState = EntryState.EXPRESSION_START;
+                break;
+        }
+    }
+
     public void buttonClear_onClick(View view) {
-        mEntryState = EntryState.OPERAND_START;
+        mEntryState = EntryState.START;
         setEntry("");
 }
 

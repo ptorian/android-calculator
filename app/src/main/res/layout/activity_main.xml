@@ -50,7 +50,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/buttonParen_text" />
+                    android:text="@string/buttonParen_text"
+                    android:onClick="buttonParen_onClick" />
                 <Button
                     android:id="@+id/buttonPercent"
                     android:layout_width="0dp"
