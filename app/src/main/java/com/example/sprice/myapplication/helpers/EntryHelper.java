@@ -1,7 +1,7 @@
 package com.example.sprice.myapplication.helpers;
 
 public class EntryHelper {
-    private EntryState mEntryState = EntryState.START;
+    protected EntryState mEntryState = EntryState.START;
     private int mParenCount = 0;
     private String mEntry = "";
 
@@ -111,7 +111,7 @@ public class EntryHelper {
         callEntryUpdated();
     }
 
-    private void appendToEntry(String entry) {
+    public void appendToEntry(String entry) {
         appendToEntry(entry, false);
     }
 

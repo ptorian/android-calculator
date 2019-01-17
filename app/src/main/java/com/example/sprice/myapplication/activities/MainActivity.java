@@ -13,6 +13,7 @@ import com.example.sprice.myapplication.helpers.Operator;
 
 public class MainActivity extends AppCompatActivity {
     private EntryHelper mEntryHelper = new EntryHelper() {
+        @Override
         public void entryUpdated(String entry) {
             setEntry(entry);
         }
