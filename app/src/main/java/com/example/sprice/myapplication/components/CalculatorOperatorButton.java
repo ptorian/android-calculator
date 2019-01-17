@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
 import com.example.sprice.myapplication.R;
+import com.example.sprice.myapplication.helpers.Operator;
 
 public class CalculatorOperatorButton extends android.support.v7.widget.AppCompatButton {
     private Operator mOperator;

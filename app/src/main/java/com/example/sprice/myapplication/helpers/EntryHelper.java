@@ -1,70 +1,42 @@
-package com.example.sprice.myapplication;
+package com.example.sprice.myapplication.helpers;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-
-import com.example.sprice.myapplication.components.CalculatorNumericButton;
-import com.example.sprice.myapplication.components.CalculatorOperatorButton;
-import com.example.sprice.myapplication.components.Operator;
-
-enum EntryState {
-    START,
-    EXPRESSION_START,
-    OPERAND_START,
-    OPERAND_LEADING_ZERO,
-    OPERAND_ENTRY,
-    OPERAND_DECIMAL_START,
-    OPERAND_DECIMAL_ENTRY
-}
-
-public class MainActivity extends AppCompatActivity {
+public class EntryHelper {
     private EntryState mEntryState = EntryState.START;
     private int mParenCount = 0;
+    private String mEntry = "";
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setEntry("");
-    }
-
-    public void numericButton_onClick(View view) {
-        CalculatorNumericButton button = (CalculatorNumericButton)view;
-        Integer buttonNumericValue = button.getNumericValue();
-
+    public void numericInput(int value) {
         switch (mEntryState) {
 
             case START:
             case EXPRESSION_START:
             case OPERAND_START:
-                if (buttonNumericValue == 0) {
+                if (value == 0) {
                     mEntryState = EntryState.OPERAND_LEADING_ZERO;
                 } else {
                     mEntryState = EntryState.OPERAND_ENTRY;
                 }
-                appendToEntry(buttonNumericValue.toString());
+                appendToEntry(Integer.toString(value));
                 break;
 
             case OPERAND_LEADING_ZERO:
-                if (buttonNumericValue != 0) {
+                if (value != 0) {
                     mEntryState = EntryState.OPERAND_ENTRY;
-                    appendToEntry(buttonNumericValue.toString(), true);
+                    appendToEntry(Integer.toString(value), true);
                 }
                 break;
 
             case OPERAND_DECIMAL_START:
                 mEntryState = EntryState.OPERAND_DECIMAL_ENTRY;
-                appendToEntry(buttonNumericValue.toString());
+                appendToEntry(Integer.toString(value));
                 break;
 
             default:
-                appendToEntry(buttonNumericValue.toString());
+                appendToEntry(Integer.toString(value));
         }
     }
 
-    public void buttonDecimal_onClick(View view) {
+    public void decimalPointInput() {
         switch (mEntryState) {
 
             case START:
@@ -81,14 +53,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void operatorButton_onClick(View view) {
+    public void operatorInput(Operator value) {
         if (mEntryState != EntryState.EXPRESSION_START && mEntryState != EntryState.OPERAND_ENTRY && mEntryState != EntryState.OPERAND_DECIMAL_ENTRY) {
             return;
         }
-        CalculatorOperatorButton button = (CalculatorOperatorButton)view;
 
-        Operator buttonOperandValue = button.getOperator();
-        switch (buttonOperandValue) {
+        switch (value) {
             case ADD:
                 appendToEntry("+");
                 break;
@@ -106,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         mEntryState = EntryState.OPERAND_START;
     }
 
-    public void buttonParen_onClick(View view) {
+    public void parenInput() {
         switch (mEntryState) {
             case OPERAND_LEADING_ZERO:
             case OPERAND_ENTRY:
@@ -131,14 +101,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void buttonClear_onClick(View view) {
+    public void clearInput() {
         mEntryState = EntryState.START;
         setEntry("");
-}
+    }
 
     private void setEntry(String entry) {
-        TextView display = findViewById(R.id.display);
-        display.setText(entry);
+        mEntry = entry;
+        callEntryUpdated();
     }
 
     private void appendToEntry(String entry) {
@@ -146,10 +116,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void appendToEntry(String entry, boolean replacePreviousCharacter) {
-        TextView display = findViewById(R.id.display);
-        String currentText = display.getText().toString();
+        String currentText = mEntry;
         String currentTextAfterRemovingLastCharacter = replacePreviousCharacter ? currentText.substring(0, currentText.length() - 1) : currentText;
         String newText = currentTextAfterRemovingLastCharacter + entry;
-        display.setText(newText);
+        setEntry(newText);
+    }
+
+    private void callEntryUpdated() {
+        entryUpdated(mEntry);
+    }
+
+    public void entryUpdated(String entry) {
+        throw new UnsupportedOperationException();
     }
 }
